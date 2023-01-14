@@ -1,0 +1,99 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Sprites/character_man.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/PlayButton.gd" type="Script" id=2]
+[ext_resource path="res://Sprites/27225-6-swimming-pool-ball-transparent-image-thumb.png" type="Texture" id=3]
+[ext_resource path="res://Fonts/Kenney Future.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Sprites/coin_01.png" type="Texture" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 100
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 50
+font_data = ExtResource( 4 )
+
+[node name="StartScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+color = Color( 0.541176, 0.709804, 0.403922, 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 86.0
+margin_top = 70.0
+margin_right = 952.0
+margin_bottom = 206.0
+custom_fonts/font = SubResource( 1 )
+text = "Don't get Hit"
+
+[node name="PlayButton" type="Button" parent="."]
+margin_left = 376.0
+margin_top = 290.0
+margin_right = 585.0
+margin_bottom = 387.0
+custom_colors/font_color = Color( 0.894118, 0.0588235, 0.0588235, 1 )
+custom_colors/font_color_hover = Color( 0.435294, 0.141176, 0.141176, 1 )
+custom_colors/font_color_pressed = Color( 0.176471, 0.286275, 0.682353, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Play!"
+flat = true
+script = ExtResource( 2 )
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 54.0
+margin_top = 417.0
+margin_right = 247.0
+margin_bottom = 474.0
+custom_fonts/font = SubResource( 3 )
+text = "You = "
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 607.0
+margin_top = 409.0
+margin_right = 859.0
+margin_bottom = 466.0
+custom_fonts/font = SubResource( 3 )
+text = "Avoid = "
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 180.0
+margin_top = 165.0
+margin_right = 382.0
+margin_bottom = 481.0
+texture = ExtResource( 1 )
+expand = true
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+margin_left = 870.0
+margin_top = 385.0
+margin_right = 962.0
+margin_bottom = 477.0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="Label4" type="Label" parent="."]
+margin_left = 254.0
+margin_top = 521.0
+margin_right = 506.0
+margin_bottom = 578.0
+custom_fonts/font = SubResource( 3 )
+text = "Collect = "
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+margin_left = 630.0
+margin_top = 508.0
+margin_right = 712.0
+margin_bottom = 584.0
+texture = ExtResource( 5 )
+expand = true
+
+[connection signal="pressed" from="PlayButton" to="PlayButton" method="_on_PlayButton_pressed"]

@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://StoneTile.tres" type="TileSet" id=1]
+[ext_resource path="res://Sprites/character_man.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/player.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/Level1.gd" type="Script" id=5]
+[ext_resource path="res://Items/ball.tscn" type="PackedScene" id=7]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 12.0
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+collision_layer = 8
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( 0, -2147483644, 0, 1, 1073741825, 0, 2, 1073741825, 0, 3, 1073741825, 0, 4, 1073741825, 0, 5, 1073741825, 0, 6, 1073741825, 0, 7, 1073741825, 0, 8, 1073741825, 0, 9, 1073741825, 0, 10, 1073741825, 0, 11, 1073741825, 0, 12, 1073741825, 0, 13, 1073741825, 0, 14, 1073741825, 0, 15, -1610612732, 0, 65536, -2147483646, 0, 65551, -1610612734, 0, 131072, -2147483646, 0, 131087, -1610612734, 0, 196608, -2147483646, 0, 196623, -1610612734, 0, 262144, -2147483646, 0, 262159, -1610612734, 0, 327680, -2147483646, 0, 327695, -1610612734, 0, 393216, -2147483646, 0, 393231, -1610612734, 0, 458752, -2147483646, 0, 458767, -1610612734, 0, 524288, -2147483642, 0, 524289, 1, 0, 524290, 1, 0, 524291, 1, 0, 524292, 1, 0, 524293, 1, 0, 524294, 1, 0, 524295, 1, 0, 524296, 1, 0, 524297, 1, 0, 524298, 1, 0, 524299, 1, 0, 524300, 1, 0, 524301, 1, 0, 524302, 1, 0, 524303, -1610612730, 0 )
+
+[node name="Balls" type="Node2D" parent="."]
+
+[node name="ball1" parent="Balls" instance=ExtResource( 7 )]
+position = Vector2( 195, 141 )
+
+[node name="ball2" parent="Balls" instance=ExtResource( 7 )]
+position = Vector2( 500, 161 )
+
+[node name="ball3" parent="Balls" instance=ExtResource( 7 )]
+position = Vector2( 832, 152 )
+
+[node name="player" type="KinematicBody2D" parent="."]
+position = Vector2( 500, 473 )
+collision_mask = 11
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="player"]
+position = Vector2( 1.90735e-06, -65 )
+scale = Vector2( 1.70313, 1.70313 )
+texture = ExtResource( 2 )
+
+[node name="coins" type="Node2D" parent="."]
+
+[connection signal="hit_player" from="Balls/ball1" to="." method="_on_ball_hit_player"]
+[connection signal="hit_player" from="Balls/ball2" to="." method="_on_ball_hit_player"]
+[connection signal="hit_player" from="Balls/ball3" to="." method="_on_ball_hit_player"]
